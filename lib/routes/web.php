@@ -13,12 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend/index');
+
+//______________________________________________________BACKEND______________________________________________________
+Route::group(['namespace' => 'Frontend'], function () {
+    Route::get('/', 'FrontendController@getHome');
+
+    Route::get('detail/{id}/{slug}.html', 'FrontendController@getDetail');
+
+    Route::get('category/{id}/{slug}.html', 'FrontendController@getCategory');
+
 });
 
 
-//BACKEND
+
+
+
+
+//______________________________________________________BACKEND______________________________________________________
 Route::group(['namespace' => 'Admin'], function () {
     Route::group(['prefix' => 'login','middleware'=>'ChecklogedIn'], function(){
         Route::get('/', 'LoginController@getLogin');

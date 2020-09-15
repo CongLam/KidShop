@@ -29,7 +29,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($productList as $prod) 
+                                    @foreach ($productList as $prod)
                                         <tr>
                                             <td>{{ $prod->product_id }}</td>
                                             <td> {{ $prod->product_name }}</td>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div id="pagination">
-                {{-- {{ $productList->links() }} --}}
+                {{ $productList->links() }}
             </div>
 
         </div>
