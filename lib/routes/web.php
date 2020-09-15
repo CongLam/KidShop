@@ -14,29 +14,43 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-//______________________________________________________BACKEND______________________________________________________
+//______________________________________________________FRONTEND______________________________________________________
 Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/', 'FrontendController@getHome');
 
-    Route::get('detail/{id}/{slug}.html', 'FrontendController@getDetail');
+    //detail product
+    Route::get('detail/{cateId}/{id}/{slug}.html', 'FrontendController@getDetail');
 
+    //category product
     Route::get('category/{id}/{slug}.html', 'FrontendController@getCategory');
 
+    //cart
+    Route::group(['prefix' => 'cart'], function () {
+        Route::get('add/{id}', 'CartController@getAddCart');
+        Route::get('show', 'CartController@getShowCart');
+        Route::get('delete/{rowId}', 'CartController@getDeleteCart');
+        Route::get('update', 'CartController@getUpdateCart');
+    });
+
+
 });
-
-
-
+Route::post('/add-cart-ajax', 'CartController@addCartAjax');
+Route::get('/show-cart', 'CartController@showCart');
 
 
 
 //______________________________________________________BACKEND______________________________________________________
 Route::group(['namespace' => 'Admin'], function () {
+    //login
     Route::group(['prefix' => 'login','middleware'=>'ChecklogedIn'], function(){
         Route::get('/', 'LoginController@getLogin');
         Route::post('/', 'LoginController@postLogin');
     });
 
+    //logout
     Route::get('logout', 'HomeController@getLogout');
+
+    //admin
     Route::group(['prefix' => 'admin','middleware'=>'ChecklogedOut'], function () {
         Route::get('home', 'HomeController@getHome');
 
@@ -50,6 +64,7 @@ Route::group(['namespace' => 'Admin'], function () {
             Route::get('delete/{id}', 'UserController@getDeleteUser');
         });
 
+        //category
         Route::group(['prefix' => 'category'], function () {
             Route::get('/', 'CategoryController@getCategory');
             Route::post('/', 'CategoryController@postCategory');
@@ -60,6 +75,7 @@ Route::group(['namespace' => 'Admin'], function () {
             Route::get('delete/{id}', 'CategoryController@getDeleteCategory');
         });
 
+        //product
         Route::group(['prefix' => 'product'], function () {
             Route::get('/', 'ProductController@getProduct');
 

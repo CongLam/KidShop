@@ -15,5 +15,7 @@
 	<link rel="stylesheet" href="assets/dest/rs-plugin/css/responsive.css">
 	<link rel="stylesheet" title="style" href="assets/dest/css/style.css">
 	<link rel="stylesheet" href="assets/dest/css/animate.css">
-	<link rel="stylesheet" title="style" href="assets/dest/css/huong-style.css">
+    <link rel="stylesheet" title="style" href="assets/dest/css/huong-style.css">
+	<link rel="stylesheet" title="style" href="assets/dest/css/sweetalert.css">
+
 </head>

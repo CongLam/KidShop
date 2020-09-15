@@ -1,6 +1,6 @@
 @extends('frontend/master/master')
 
-@section('title', 'Trang chủ')
+@section('title', 'Danh mục')
 
 @section('content')
 
@@ -58,7 +58,7 @@
                                     <div class="col-sm-4" style="margin-bottom: 30px;">
                                         <div class="single-item">
                                             <div class="single-item-header">
-                                                <a href="{{ asset('detail/'.$item->product_id.'/'.$item->product_slug.'.html') }}"><img src="{{ asset('lib/storage/app/avatar/'.$item->product_img) }}" alt=""></a>
+                                                <a href="{{ asset('detail/'.$item->product_cate.'/'.$item->product_id.'/'.$item->product_slug.'.html') }}"><img src="{{ asset('lib/storage/app/avatar/'.$item->product_img) }}" alt=""></a>
                                             </div>
                                             <div class="single-item-body">
                                                 <p class="single-item-title">{{ $item->product_name }}</p>
@@ -68,7 +68,7 @@
                                             </div>
                                             <div class="single-item-caption">
                                                 <a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-                                                <a class="beta-btn primary" href="{{ asset('detail/'.$item->product_id.'/'.$item->product_slug.'.html') }}">Details <i class="fa fa-chevron-right"></i></a>
+                                                <a class="beta-btn primary" href="{{  asset('detail/'.$item->product_cate.'/'.$item->product_id.'/'.$item->product_slug.'.html') }}">Details <i class="fa fa-chevron-right"></i></a>
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>

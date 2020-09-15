@@ -57,23 +57,37 @@
 						<div class="beta-products-list">
 							<h4>Sản phẩm mới</h4>
 							<div class="row">
-								@foreach ($newProducts as $newProd)
+								@foreach ($newProducts as $item)
                                     <div class="col-sm-3">
                                         <div class="single-item">
-                                            <div class="single-item-header">
-                                                <a href="{{ asset('detail/'.$newProd->product_id.'/'.$newProd->product_slug.'.html') }}"><img src="{{ asset('lib/storage/app/avatar/'.$newProd->product_img) }}" alt=""></a>
-                                            </div>
-                                            <div class="single-item-body">
-                                                <p class="single-item-title">{{ $newProd->product_name }}</p>
-                                                <p class="single-item-price">
-                                                    <span>{{ number_format($newProd->product_price, 0, '.', ',') }}VNĐ</span>
-                                                </p>
-                                            </div>
-                                            <div class="single-item-caption">
-                                                <a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-                                                <a class="beta-btn primary" href="{{ asset('detail/'.$newProd->product_id.'/'.$newProd->product_slug.'.html') }}">Details <i class="fa fa-chevron-right"></i></a>
-                                                <div class="clearfix"></div>
-                                            </div>
+                                            <form>
+                                                {{-- {{ csrf_field() }} --}}
+                                                <input type="hidden" value="{{ $item->product_id }}" class="cart_product_id_{{ $item->product_id }}">
+                                                <input type="hidden" value="{{ $item->product_name }}" class="cart_product_name_{{ $item->product_id }}">
+                                                <input type="hidden" value="{{ $item->product_price }}" class="cart_product_price_{{ $item->product_id }}">
+                                                <input type="hidden" value="{{ $item->product_img }}" class="cart_product_img_{{ $item->product_id }}">
+                                                <input type="hidden" value="1" class="cart_product_qty_{{ $item->product_id }}">
+
+
+                                                <div class="single-item-header">
+                                                    <a href="{{ asset('detail/'.$item->product_cate.'/'.$item->product_id.'/'.$item->product_slug.'.html') }}"><img src="{{ asset('lib/storage/app/avatar/'.$item->product_img) }}" alt=""></a>
+                                                </div>
+                                                <div class="single-item-body">
+                                                    <p class="single-item-title">{{ $item->product_name }}</p>
+                                                    <p class="single-item-price">
+                                                        <span>{{ number_format($item->product_price, 0, '.', ',') }}VNĐ</span>
+                                                    </p>
+                                                </div>
+                                                <div class="single-item-caption">
+                                                    <a class="add-to-cart pull-left" href="{{ asset('cart/add/'.$item->product_id) }}"><i class="fa fa-shopping-cart"></i></a>
+                                                    {{-- <button class="btn btn-primary add-to-cart" name="add-to-cart" data-id_product="{{ $item->product_id }}" >
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </button> --}}
+
+                                                    <a class="beta-btn primary" href="{{ asset('detail/'.$item->product_cate.'/'.$item->product_id.'/'.$item->product_slug.'.html') }}">Details <i class="fa fa-chevron-right"></i></a>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 @endforeach
@@ -89,7 +103,7 @@
                                     <div class="col-sm-3" style="margin-bottom: 25px;">
                                         <div class="single-item">
                                             <div class="single-item-header">
-                                                <a href="{{ asset('detail/'.$newProd->product_id.'/'.$newProd->product_slug.'.html') }}"><img src="{{ asset('lib/storage/app/avatar/'.$feaProd->product_img) }}" alt=""></a>
+                                                <a href="{{ asset('detail/'.$feaProd->product_cate.'/'.$feaProd->product_id.'/'.$feaProd->product_slug.'.html') }}"><img src="{{ asset('lib/storage/app/avatar/'.$feaProd->product_img) }}" alt=""></a>
                                             </div>
                                             <div class="single-item-body">
                                                 <p class="single-item-title">{{ $feaProd->product_name }}</p>
@@ -99,7 +113,7 @@
                                             </div>
                                             <div class="single-item-caption">
                                                 <a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-                                                <a class="beta-btn primary" href="{{ asset('detail/'.$newProd->product_id.'/'.$newProd->product_slug.'.html') }}">Details <i class="fa fa-chevron-right"></i></a>
+                                                <a class="beta-btn primary" href="{{ asset('detail/'.$feaProd->product_cate.'/'.$feaProd->product_id.'/'.$feaProd->product_slug.'.html') }}">Details <i class="fa fa-chevron-right"></i></a>
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>

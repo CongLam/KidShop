@@ -16,19 +16,20 @@ class FrontendController extends Controller
         //feature product
         $data['featureProducts'] = Product::where('product_featured', 1)->orderBy('product_id', 'desc')->take(8)->get();
 
-
-
         return view('frontend.index', $data);
     }
 
-    public function getDetail($id){
+    public function getDetail($cateId, $id){
         $data['product'] = Product::find($id);
 
         //new product
         $data['newProducts'] = Product::orderBy('product_id', 'desc')->take(4)->get();
 
-        //feature product
+        //featured product
         $data['featureProducts'] = Product::where('product_featured', 1)->orderBy('product_id', 'desc')->take(4)->get();
+
+        //related product
+        $data['relatedProducts'] = Product::where('product_cate', $cateId)->orderBy('product_id', 'desc')->take(3)->get();
 
         return view('frontend.product', $data);
     }

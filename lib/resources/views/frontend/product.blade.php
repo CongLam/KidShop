@@ -1,6 +1,6 @@
 @extends('frontend/master/master')
 
-@section('title', 'Trang chủ')
+@section('title', 'Chi tiết sản phẩm')
 
 @section('content')
 
@@ -92,63 +92,26 @@
                     <h4>Related Products</h4>
 
                     <div class="row">
-                        <div class="col-sm-4">
-                            <div class="single-item">
-                                <div class="single-item-header">
-                                    <a href="product.html"><img src="assets/dest/images/products/4.jpg" alt=""></a>
-                                </div>
-                                <div class="single-item-body">
-                                    <p class="single-item-title">Sample Woman Top</p>
-                                    <p class="single-item-price">
-                                        <span>$34.55</span>
-                                    </p>
-                                </div>
-                                <div class="single-item-caption">
-                                    <a class="add-to-cart pull-left" href="product.html"><i class="fa fa-shopping-cart"></i></a>
-                                    <a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="single-item">
-                                <div class="single-item-header">
-                                    <a href="product.html"><img src="assets/dest/images/products/5.jpg" alt=""></a>
-                                </div>
-                                <div class="single-item-body">
-                                    <p class="single-item-title">Sample Woman Top</p>
-                                    <p class="single-item-price">
-                                        <span>$34.55</span>
-                                    </p>
-                                </div>
-                                <div class="single-item-caption">
-                                    <a class="add-to-cart pull-left" href="product.html"><i class="fa fa-shopping-cart"></i></a>
-                                    <a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
-                                    <div class="clearfix"></div>
+                        @foreach ($relatedProducts as $item)
+                            <div class="col-sm-4">
+                                <div class="single-item">
+                                    <div class="single-item-header">
+                                        <a href="{{ asset('detail/'.$item->product_cate.'/'.$item->product_id.'/'.$item->product_slug.'.html') }}"><img src="{{ asset('lib/storage/app/avatar/'.$item->product_img) }}" alt=""></a>
+                                    </div>
+                                    <div class="single-item-body">
+                                        <p class="single-item-title">{{ $item->product_name }}</p>
+                                        <p class="single-item-price">
+                                            <span>{{ number_format($item->product_price, 0, '.', ',') }}VNĐ</span>
+                                        </p>
+                                    </div>
+                                    <div class="single-item-caption">
+                                        <a class="add-to-cart pull-left" href="product.html"><i class="fa fa-shopping-cart"></i></a>
+                                        <a class="beta-btn primary" href="{{ asset('detail/'.$item->product_cate.'/'.$item->product_id.'/'.$item->product_slug.'.html') }}">Details <i class="fa fa-chevron-right"></i></a>
+                                        <div class="clearfix"></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="single-item">
-                                <div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
-
-                                <div class="single-item-header">
-                                    <a href="#"><img src="assets/dest/images/products/6.jpg" alt=""></a>
-                                </div>
-                                <div class="single-item-body">
-                                    <p class="single-item-title">Sample Woman Top</p>
-                                    <p class="single-item-price">
-                                        <span class="flash-del">$34.55</span>
-                                        <span class="flash-sale">$33.55</span>
-                                    </p>
-                                </div>
-                                <div class="single-item-caption">
-                                    <a class="add-to-cart pull-left" href="#"><i class="fa fa-shopping-cart"></i></a>
-                                    <a class="beta-btn primary" href="#">Details <i class="fa fa-chevron-right"></i></a>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div> <!-- .beta-products-list -->
             </div>
@@ -159,7 +122,7 @@
                         <div class="beta-sales beta-lists">
                             @foreach ($featureProducts as $item)
                                 <div class="media beta-sales-item">
-                                    <a class="pull-left" href="{{ asset('detail/'.$item->product_id.'/'.$item->product_slug.'.html') }}"><img src="{{ asset('lib/storage/app/avatar/'.$item->product_img) }}" alt=""></a>
+                                    <a class="pull-left" href="{{ asset('detail/'.$item->product_cate.'/'.$item->product_id.'/'.$item->product_slug.'.html') }}"><img src="{{ asset('lib/storage/app/avatar/'.$item->product_img) }}" alt=""></a>
                                     <div class="media-body">
                                         {{ $item->product_name }}
                                         <span class="beta-sales-price">{{ number_format($item->product_price, 0, '.', ',') }}VNĐ</span>
@@ -175,7 +138,7 @@
                         <div class="beta-sales beta-lists">
                             @foreach ($newProducts as $item)
                                 <div class="media beta-sales-item">
-                                    <a class="pull-left" href="{{ asset('detail/'.$item->product_id.'/'.$item->product_slug.'.html') }}"><img src="{{ asset('lib/storage/app/avatar/'.$item->product_img) }}" alt=""></a>
+                                    <a class="pull-left" href="{{ asset('detail/'.$item->product_cate.'/'.$item->product_id.'/'.$item->product_slug.'.html') }}"><img src="{{ asset('lib/storage/app/avatar/'.$item->product_img) }}" alt=""></a>
                                     <div class="media-body">
                                         {{ $item->product_name }}
                                         <span class="beta-sales-price">{{ number_format($item->product_price, 0, '.', ',') }}VNĐ</span>
