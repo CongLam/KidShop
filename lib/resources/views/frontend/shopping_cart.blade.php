@@ -68,37 +68,19 @@
 
 					<tfoot>
 						<tr>
-							<td colspan="6" class="actions">
-
-								<div class="coupon">
-									<label for="coupon_code">Coupon</label>
-									<input type="text" name="coupon_code" value="" placeholder="Coupon code">
-									<button type="submit" class="beta-btn primary" name="apply_coupon">Apply Coupon <i class="fa fa-chevron-right"></i></button>
-								</div>
-
-								<button type="submit" class="beta-btn primary" name="update_cart">Update Cart <i class="fa fa-chevron-right"></i></button>
-								<button type="submit" class="beta-btn primary" name="proceed">Proceed to Checkout <i class="fa fa-chevron-right"></i></button>
+							<td colspan="5" class="actions">
+                                <div class="col-sm-8">
+                                    <h3>Tổng tiền: {{ $totalPrice }}</h3>
+                                </div>
+                                <div class="col-sm-4">
+									<a href="{{ asset('cart/checkout') }}" type="submit" class="beta-btn primary" name="apply_coupon">Thanh toán<i class="fa fa-chevron-right"></i></a>
+                                </div>
 							</td>
 						</tr>
 					</tfoot>
 				</table>
 				<!-- End of Shop Table Products -->
 			</div>
-
-
-			<!-- Cart Collaterals -->
-			<div class="cart-collaterals">
-				<div class="cart-totals pull-right">
-					<div class="cart-totals-row"><h5 class="cart-total-title">Cart Totals</h5></div>
-					<div class="cart-totals-row"><span>Tổng:</span> <span>{{ $totalPrice }}</span></div>
-					<div class="cart-totals-row"><span>Shipping:</span> <span>Free Shipping</span></div>
-					<div class="cart-totals-row"><span>Order Total:</span> <span>$188.00</span></div>
-				</div>
-
-				<div class="clearfix"></div>
-			</div>
-			<!-- End of Cart Collaterals -->
-			<div class="clearfix"></div>
 
 		</div> <!-- #content -->
 	</div> <!-- .container -->
@@ -122,13 +104,13 @@
 
     <script type="text/javascript">
         function updateCart(qty, rowId){
-            // console.log(qty);
-            // console.log(rowId);
-            $.get(
+            console.log(qty);
+            console.log(rowId);
+            jQuery.get(
                 "{{ asset('cart/update') }}", //url
                 {qty:qty, rowId:rowId},  //doi tuong: du lieu duoc gui len url
                 function(){
-                    location.reload(); 
+                    location.reload();
                 }
             );
         }

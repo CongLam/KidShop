@@ -67,7 +67,7 @@
                                 <option value="4">4</option>
                                 <option value="5">5</option>
                             </select>
-                            <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i></a>
+                            <a class="add-to-cart pull-left" href="{{ asset('cart/add/'.$product->product_id) }}"><i class="fa fa-shopping-cart"></i></a>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                                         </p>
                                     </div>
                                     <div class="single-item-caption">
-                                        <a class="add-to-cart pull-left" href="product.html"><i class="fa fa-shopping-cart"></i></a>
+                                        <a class="add-to-cart pull-left" href="{{ asset('cart/add/'.$item->product_id) }}"><i class="fa fa-shopping-cart"></i></a>
                                         <a class="beta-btn primary" href="{{ asset('detail/'.$item->product_cate.'/'.$item->product_id.'/'.$item->product_slug.'.html') }}">Details <i class="fa fa-chevron-right"></i></a>
                                         <div class="clearfix"></div>
                                     </div>

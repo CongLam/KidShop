@@ -25,15 +25,15 @@
             <div class="pull-right beta-components space-left ov">
                 <div class="space10">&nbsp;</div>
                 <div class="beta-comp">
-                    <form role="search" method="get" id="searchform" action="/">
-                        <input type="text" value="" name="s" id="s" placeholder="Nhập từ khóa..." />
+                    <form role="search" method="get" id="searchform" action="{{ asset('search') }}">
+                        <input type="text" value="" name="enterKeyword" id="s" placeholder="Nhập từ khóa..." />
                         <button class="fa fa-search" type="submit" id="searchsubmit"></button>
                     </form>
                 </div>
 
                 <div class="beta-comp">
                     <div class="cart">
-                        <a href="{{ asset('show-cart') }}">
+                        <a href="{{ asset('cart/show') }}">
                             <i class="fa fa-shopping-cart"></i> Giỏ hàng
                         </a>
                     </div> <!-- .cart -->
@@ -49,15 +49,15 @@
             <nav class="main-menu">
                 <ul class="l-inline ov">
                     <li><a href="{{ asset('/') }}">Trang chủ</a></li>
-                    <li><a href="#">Danh mục sản phẩm</a>
+                    <li><a>Danh mục sản phẩm</a>
                         <ul class="sub-menu">
                             @foreach ($categories as $item)
                                 <li><a href="{{asset('category/'.$item->cate_id.'/'.$item->cate_slug.'.html')}}" >{{$item->cate_name}}</a></li>
                             @endforeach
                         </ul>
                     </li>
-                    <li><a href="about.html">Giới thiệu</a></li>
-                    <li><a href="contacts.html">Liên hệ</a></li>
+                    <li><a href="{{ asset('about') }}">Giới thiệu</a></li>
+                    <li><a href="{{ asset('contact') }}">Liên hệ</a></li>
                 </ul>
                 <div class="clearfix"></div>
             </nav>

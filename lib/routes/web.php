@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Frontend'], function () {
     Route::get('/', 'FrontendController@getHome');
 
+    Route::get('about', 'FrontendController@getAbout');
+
+    Route::get('contact', 'FrontendController@getContact');
+
+
     //detail product
     Route::get('detail/{cateId}/{id}/{slug}.html', 'FrontendController@getDetail');
 
@@ -30,12 +35,20 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('show', 'CartController@getShowCart');
         Route::get('delete/{rowId}', 'CartController@getDeleteCart');
         Route::get('update', 'CartController@getUpdateCart');
+
+        //checkout
+        Route::get('checkout', 'CheckoutController@getCheckOut');
+        Route::post('checkout', 'CheckoutController@postCheckOut');
+        Route::get('complete', 'CheckoutController@getComplete');
     });
+
+    //search
+    Route::get('search', 'FrontendController@getSearch');
 
 
 });
-Route::post('/add-cart-ajax', 'CartController@addCartAjax');
-Route::get('/show-cart', 'CartController@showCart');
+// Route::post('/add-cart-ajax', 'CartController@addCartAjax');
+// Route::get('/show-cart', 'CartController@showCart');
 
 
 

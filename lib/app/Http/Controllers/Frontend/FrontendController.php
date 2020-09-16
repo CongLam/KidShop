@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 
+
+
 class FrontendController extends Controller
 {
     public function getHome(){
@@ -17,6 +19,14 @@ class FrontendController extends Controller
         $data['featureProducts'] = Product::where('product_featured', 1)->orderBy('product_id', 'desc')->take(8)->get();
 
         return view('frontend.index', $data);
+    }
+
+    public function getAbout(){
+        return view('frontend.about');
+    }
+
+    public function getContact(){
+        return view('frontend.contacts');
     }
 
     public function getDetail($cateId, $id){
@@ -39,4 +49,16 @@ class FrontendController extends Controller
         $data['cateName'] = Category::find($id);
         return view('frontend.product_type', $data);
     }
+
+    public function getSearch(Request $request){
+        $result = $request->enterKeyword;
+        $data['keyword'] = $result;
+        $result = str_replace(' ', '%', $result); //thay dau cach bang %
+        $data['itemsSeach'] = Product::where('product_name','like', '%'.$result.'%')->get();
+        return view('frontend.search_product', $data);
+    }
+
+
+
+
 }
