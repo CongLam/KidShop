@@ -58,7 +58,9 @@
                                 </td>
 
                                 <td class="product-remove">
-                                    <a href="{{ asset('cart/delete/'.$item->rowId) }}" class="remove" title="Remove this item"><i class="fa fa-trash-o"></i></a>
+                                    {{-- <a href="{{ asset('cart/delete/'.$item->rowId) }}" class="remove" title="Remove this item"><i class="fa fa-trash-o"></i></a> --}}
+                                    <a class="remove" title="Remove this item" onclick="deleteItem('{{ $item->rowId }}')"><i class="fa fa-trash-o"></i></a>
+
                                 </td>
                             </tr>
                         @endforeach
@@ -104,11 +106,22 @@
 
     <script type="text/javascript">
         function updateCart(qty, rowId){
-            console.log(qty);
-            console.log(rowId);
+            // console.log(qty);
+            // console.log(rowId);
             jQuery.get(
                 "{{ asset('cart/update') }}", //url
                 {qty:qty, rowId:rowId},  //doi tuong: du lieu duoc gui len url
+                function(){
+                    location.reload();
+                }
+            );
+            swal("Updated!");
+        }
+
+        function deleteItem(rowId){
+            jQuery.get(
+                "{{ asset('cart/delete') }}",
+                {rowId:rowId},
                 function(){
                     location.reload();
                 }

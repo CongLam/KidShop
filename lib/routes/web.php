@@ -35,6 +35,8 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('show', 'CartController@getShowCart');
         Route::get('delete/{rowId}', 'CartController@getDeleteCart');
         Route::get('update', 'CartController@getUpdateCart');
+        Route::get('delete', 'CartController@getDeleteCartAjax');
+
 
         //checkout
         Route::get('checkout', 'CheckoutController@getCheckOut');

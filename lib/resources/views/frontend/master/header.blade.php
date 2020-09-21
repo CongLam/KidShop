@@ -34,7 +34,7 @@
                 <div class="beta-comp">
                     <div class="cart">
                         <a href="{{ asset('cart/show') }}">
-                            <i class="fa fa-shopping-cart"></i> Giỏ hàng
+                            <i class="fa fa-shopping-cart"></i> Giỏ hàng({{ Cart::count() }})
                         </a>
                     </div> <!-- .cart -->
                 </div>
@@ -42,8 +42,9 @@
             <div class="clearfix"></div>
         </div> <!-- .container -->
     </div> <!-- .header-body -->
-    <div class="header-bottom" style="background-color: #0277b8;">
-        <div class="container">
+
+    {{--<div class="header-bottom" style="background-color: #0277b8;">
+         <div class="container">
             <a class="visible-xs beta-menu-toggle pull-right" href="#"><span class='beta-menu-toggle-text'>Menu</span> <i class="fa fa-bars"></i></a>
             <div class="visible-xs clearfix"></div>
             <nav class="main-menu">
@@ -62,5 +63,37 @@
                 <div class="clearfix"></div>
             </nav>
         </div> <!-- .container -->
+    </div> <!-- .header-bottom --> --}}
+
+    <div  >
+        <nav class="navbar navbar-inverse header-bottom" >
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collection of nav links, forms, and other content for toggling -->
+            <div id="navbarCollapse" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{{ asset('/') }}">Trang chủ</a></li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Danh  mục sản phẩm <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            @foreach ($categories as $item)
+                                <li><a href="{{asset('category/'.$item->cate_id.'/'.$item->cate_slug.'.html')}}" >{{$item->cate_name}}</a></li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    <li><a href="{{ asset('about') }}">Giới thiệu</a></li>
+                    <li><a href="{{ asset('contact') }}">Liên hệ</a></li>
+                </ul>
+
+            </div>
+        </nav>
     </div> <!-- .header-bottom -->
+
 </div> <!-- #header -->

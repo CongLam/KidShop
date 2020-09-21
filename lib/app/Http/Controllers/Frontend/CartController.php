@@ -38,7 +38,9 @@ class CartController extends Controller
         Cart::update($request->rowId, $request->qty);
     }
 
-    
+    public function getDeleteCartAjax(Request $request){
+        Cart::remove($request->rowId);
+    }
 
 
 

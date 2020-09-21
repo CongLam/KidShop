@@ -1,8 +1,16 @@
 @include('frontend/master/head')
+<style>
+    .scrollToTop{
+        width: 40px; height:40px; background-color: grey; color:#fff; top:85%; right: 25px; position:fixed; align-items: center;; font-size: 15px; font-weight: bolder;
+        padding: 10px 5px
+    }
+</style>
 <body>
     @include('frontend/master/header')
 
     @yield('content')
+
+    <div class="scrollToTop">TOP</div>
 
     @include('frontend/master/footer')
 
@@ -57,6 +65,28 @@
 				$(".header-bottom").removeClass('fixNav')
 			}}
         )
+
+
+        //back-top
+        //b1:an back top btn
+        $(".scrollToTop").hide();
+        //b2: hien back top khi keo xuong 100px
+        $(window).scroll(function () {
+            if($(this).scrollTop()>400){
+                $(".scrollToTop").fadeIn();
+            }
+            else{
+                $(".scrollToTop").fadeOut();
+            }
+
+        });
+        //b3:nhay len top khi click
+        $(".scrollToTop").click(function (e) {
+            $('html,body').animate({ scrollTop: 0 }, 'slow');
+        return false;
+
+        });
+
 
 	})
     </script>
