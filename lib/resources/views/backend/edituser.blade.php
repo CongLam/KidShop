@@ -23,7 +23,7 @@
                                 <input type="email" name="email" class="form-control" placeholder="Email..." value="{{ $user->email }}">
                             </div>
                             <div class="form-group">
-                                <label>Password:</label>
+                                <label>New Password:</label>
                                 <input type="password" id="password" name="password" class="form-control" placeholder="Nhập password mới nếu muốn thay đổi..." >
                             </div>
                             <div class="form-group">
@@ -46,7 +46,7 @@
         </div>
     </div><!--/.row-->
 
-    <script>
+    {{--  <script>
         function checkPasswordMatch() {
             var password = $("#password").val();
             var confirmPassword = $("#repassword").val();
@@ -58,6 +58,6 @@
         $(document).ready(function () {
            $("#repassword").keyup(checkPasswordMatch);
         });
-    </script>
+    </script>  --}}
 
 @endsection

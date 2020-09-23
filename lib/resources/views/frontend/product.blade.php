@@ -4,6 +4,35 @@
 
 @section('content')
 
+<style>
+    .single-item-title {
+        font-size:30px;
+        margin-bottom:5px;
+    font-weight: bolder;
+
+    }
+
+    .single-item-price {
+        font-size:25px;
+        color:rgb(184, 23, 23);
+    }
+    .add-cart{
+        height: 65px;
+        line-height: 65px;
+        padding: 0px;
+        background: -webkit-linear-gradient(#434e5f, #636767);
+    }
+    .add-cart a{
+        color: #fff;
+        font-weight: bold;
+        font-size: 18px;
+        display: inherit;
+    }
+    .img-product:hover{
+        transform: scale(1.3);
+        transition: 0.4s;
+    }
+</style>
 
 <div class="inner-header">
     <div class="container">
@@ -25,12 +54,12 @@
             <div class="col-sm-9">
 
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 img-product">
                         <img src="{{ asset('lib/storage/app/avatar/'.$product->product_img) }}" alt="">
                     </div>
                     <div class="col-sm-8">
                         <div class="single-item-body">
-                            <p class="single-item-title">{{ $product->product_name }}</p>
+                            <h2 class="single-item-title">{{ $product->product_name }}</h2>
                             <p class="single-item-price">
                                 <span>{{ number_format($product->product_price, 0, '.', ',') }}VNĐ</span>
                             </p>
@@ -45,7 +74,7 @@
                             <div class="space20">&nbsp;</div>
                             <p>Tình trạng: {{ $product->product_condition }}</p>
                             <div class="space20">&nbsp;</div>
-                            <p>Khuyến mại: {{ $product->product_promotion }}<</p>
+                            <p>Khuyến mại: {{ $product->product_promotion }}</p>
                             <div class="space20">&nbsp;</div>
                             <p>Kho:
                                 @if($product->product_status == 1)
@@ -57,19 +86,10 @@
                         </div>
                         <div class="space20">&nbsp;</div>
 
-                        <p>Chọn số lượng:</p>
-                        <div class="single-item-options">
-                            <select class="wc-select" name="color">
-                                <option>Số lượng</option>
-                                <option value="1" selected>1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                            <a class="add-to-cart pull-left" href="{{ asset('cart/add/'.$product->product_id) }}"><i class="fa fa-shopping-cart"></i></a>
-                            <div class="clearfix"></div>
-                        </div>
+                        <p class="add-cart text-center">
+                            <a href="{{ asset('cart/add/'.$product->product_id) }}">Đặt hàng online</a>
+                        </p>
+
                     </div>
                 </div>
 

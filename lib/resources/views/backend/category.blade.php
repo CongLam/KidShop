@@ -2,6 +2,8 @@
 @section('title', 'Home')
 @section('content')
 
+
+
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">Danh mục sản phẩm</h2>
@@ -14,7 +16,6 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3>Thêm danh mục</h3>
-
                 </div>
                 <div class="panel-body">
                     @include('errors.note')
@@ -29,8 +30,6 @@
                 </div>
             </div>
         </div>
-
-
 
         <div class="col-xs-12 col-md-7 col-lg-7">
             <div class="panel panel-primary">
@@ -56,8 +55,6 @@
                                         </td>
                                     </tr>
                                   @endforeach
-
-
                             </tbody>
                         </table>
                     </div>

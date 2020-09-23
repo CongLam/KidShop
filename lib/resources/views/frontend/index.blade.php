@@ -4,6 +4,22 @@
 
 @section('content')
 
+<style>
+    .single-item-title {
+font-size:23px;
+margin-bottom:10px;
+font-weight: bolder;
+
+}
+
+.single-item-price {
+font-size:20px;
+color:rgb(184, 23, 23);
+font-weight: bolder;
+margin-bottom:10px;
+}
+</style>
+
 	<div class="rev-slider">
 	    <div class="fullwidthbanner-container">
 					<div class="fullwidthbanner">
@@ -107,9 +123,9 @@
 							<div class="row" >
 								@foreach ($featureProducts as $feaProd)
                                     <div class="col-sm-3" style="margin-bottom: 25px;">
-                                        <div class="single-item">
+                                        <div class="single-item" width="80%">
                                             <div class="single-item-header">
-                                                <a href="{{ asset('detail/'.$feaProd->product_cate.'/'.$feaProd->product_id.'/'.$feaProd->product_slug.'.html') }}"><img src="{{ asset('lib/storage/app/avatar/'.$feaProd->product_img) }}" alt=""></a>
+                                                <a href="{{ asset('detail/'.$feaProd->product_cate.'/'.$feaProd->product_id.'/'.$feaProd->product_slug.'.html') }}"><img width="80%" src="{{ asset('lib/storage/app/avatar/'.$feaProd->product_img) }}" alt=""></a>
                                             </div>
                                             <div class="single-item-body">
                                                 <p class="single-item-title">{{ $feaProd->product_name }}</p>

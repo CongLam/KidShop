@@ -32,9 +32,7 @@ class UserController extends Controller
         $user = new User();
         $arr['email'] = $request->email;
         $arr['level'] = $request->level;
-        if($request->repassword != ""){
-            $arr['password'] = $request->repassword;
-        }
+        $arr['password'] = bcrypt($request->repassword);
         $user::where('id',$id)->update($arr);
         return redirect('admin/user');
     }

@@ -1877,13 +1877,17 @@ margin-bottom:20px
 }
 
 .single-item-title {
-font-size:15px;
-margin-bottom:5px
+font-size:23px;
+margin-bottom:10px;
+font-weight: bolder;
+
 }
 
 .single-item-price {
 font-size:20px;
-color:#000
+color:rgb(184, 23, 23);
+font-weight: bolder;
+margin-bottom:10px;
 }
 
 .add-to-cart {

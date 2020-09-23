@@ -43,7 +43,7 @@
                                                 <a href="{{ asset('admin/product/delete/'.$prod->product_id) }}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" ><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>
                                             </td>
                                         </tr>
-                                     @endforeach -
+                                     @endforeach
                                 </tbody>
                             </table>
                         </div>

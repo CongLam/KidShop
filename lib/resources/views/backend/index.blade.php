@@ -2,26 +2,20 @@
 @section('title', 'Home')
 @section('content')
 
-    <?php
-        // $a=[1,4,5,6,3,1,4];
-
-        // sort($a);
-
-        // print_r($a);
-
-        // $temp = 1;
-        // for ($i=1; $i < count($a) ; $i++) {
-        //     if($a[$i]==$a[$i-1]){
-        //         $temp++;
-        //     }
-        //     else{
-        //         echo("<br>So ".$a[$i-1]." xuat hien ".$temp."times");
-        //         $temp=1;
-        //     }
-        // }
-        // echo("<br>So ".$a[$i-1]." xuat hien ".$temp."times");
-
-    ?>
+    <style>
+        .centered {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -100px;
+        }
+    </style>
+    <div class="container centered">
+        <div class="row">
+            <h1>Welcome to my website! :)</h1>
+        </div>
+    </div>
 
 
 @endsection
